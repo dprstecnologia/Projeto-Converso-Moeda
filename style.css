@@ -16,7 +16,7 @@ body {
 }
 
 .logo {
-    width: 50%;
+    width: 40%;
     max-width: 200px;
     margin-top: 10px;
 }
@@ -130,5 +130,90 @@ button {
 
     .converter .currency-valor {
         font-size: 1rem; /* Ajusta o tamanho da fonte */
+    }
+}
+
+@media (max-width: 900px) {
+    .logo {
+        width: 70%;
+        max-width: 150px;
+    }
+
+    main {
+        max-width: 90%;
+        padding: 12px 8px; /* Ajusta o padding para telas menores */
+    }
+
+    select, input, button {
+        height: 2rem; /* Reduz a altura para melhor ajuste em telas pequenas */
+        font-size: 0.8rem; /* Ajusta o tamanho da fonte */
+    }
+
+    .converter img {
+        max-width: 40px; /* Ajusta o tamanho das imagens */
+    }
+
+    .converter .currency {
+        font-size: 0.8rem; /* Ajusta o tamanho da fonte */
+    }
+
+    .converter .currency-valor {
+        font-size: 1rem; /* Ajusta o tamanho da fonte */
+    }
+}
+
+/* Media Query para telas menores que 900px */
+@media (max-width: 900px) {
+    .logo {
+        width: 70%;
+        max-width: 150px;
+    }
+
+    main {
+        max-width: 90%;
+        padding: 12px 8px; /* Ajusta o padding para telas menores */
+    }
+
+    select, input, button {
+        height: 2rem; /* Reduz a altura para melhor ajuste em telas pequenas */
+        font-size: 0.8rem; /* Ajusta o tamanho da fonte */
+    }
+
+    .converter img {
+        max-width: 40px; /* Ajusta o tamanho das imagens */
+    }
+
+    .converter .currency {
+        font-size: 0.8rem; /* Ajusta o tamanho da fonte */
+    }
+
+    .converter .currency-valor {
+        font-size: 1rem; /* Ajusta o tamanho da fonte */
+    }
+}
+
+/* Media Query para telas com altura menor que 700px */
+@media (max-height: 700px) {
+    body {
+        padding: 0 10px; /* Adiciona um pequeno padding horizontal para evitar que o conteúdo grude nas bordas */
+    }
+
+    main {
+        max-height: calc(100vh - 20px); /* Ajusta a altura máxima para se ajustar à tela com algum espaço adicional */
+        overflow-y: auto; /* Adiciona rolagem vertical apenas se necessário */
+    }
+
+    .logo {
+        width: 40%;
+        max-width: 100px;
+        margin-top: 5px;
+    }
+    select, input, button {
+        height: 1.8rem; /* Reduz a altura para melhor ajuste em telas pequenas */
+        font-size: 0.8rem; /* Ajusta o tamanho da fonte */
+    }
+
+    .converter {
+        padding: 8px; /* Reduz o padding interno para se ajustar melhor em telas pequenas */
     }
 }
