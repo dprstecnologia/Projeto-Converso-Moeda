@@ -12,11 +12,11 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    padding: 10px; /* Adicionei padding para evitar que o conteúdo encoste nas bordas da tela */
+    padding: 10px;
 }
 
 .logo {
-    width: 50%; /* Ajustei para uma porcentagem */
+    width: 50%;
     max-width: 200px;
     margin-top: 10px;
 }
@@ -28,7 +28,7 @@ main {
     border-radius: 15px;
     padding: 24px 16px;
     margin-top: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adicionei sombra para melhorar a visibilidade */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -39,8 +39,7 @@ label {
     margin-bottom: 15px;
 }
 
-select,
-input {
+select, input {
     background: #ffffff;
     border: 1px solid #bbbbbb;
     border-radius: 4px;
@@ -84,7 +83,7 @@ button {
 }
 
 .converter img {
-    width: 10vw; /* Ajustei para uma porcentagem */
+    width: 10vw;
     max-width: 40px;
     height: auto;
 }
@@ -100,7 +99,6 @@ button {
     font-weight: 700;
 }
 
-/* Media queries para diferentes tamanhos de tela */
 @media (min-width: 600px) {
     main {
         width: 80vw;
@@ -139,20 +137,5 @@ button {
 
     .converter .currency-valor {
         font-size: 1.75rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    main {
-        width: 60vw;
-    }
-
-    .converter img {
-        width: 6vw;
-        max-width: 70px;
-    }
-
-    .converter .currency-valor {
-        font-size: 2rem;
     }
 }
