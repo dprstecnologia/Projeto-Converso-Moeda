@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor Moeda</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <img class="logo" src="./assets/logo.gif" alt="Logo Conversor de Moedas">
+    <main>
+        <label>
+            Converter <b>de:</b>
+            <select id="converterDe">
+                <option value="BRL">R$ Real Brasileiro</option>
+                <option value="USD">US$ Dólar Americano</option>
+                <option value="EUR">€ Euro</option>
+            </select>
+        </label>
+
+        <label>
+            Converter <b>para:</b>
+            <select id="converterPara">
+                <option value="USD">US$ Dólar Americano</option>
+                <option value="BRL">R$ Real Brasileiro</option>
+                <option value="EUR">€ Euro</option>
+            </select>
+        </label>
+
+        <label>
+            Valor
+            <input type="text" id="valorInput" placeholder="R$ 10.0000,00">
+        </label>
+        <button id="convertButton">
+            Converter
+        </button>
+        <section class="converter">
+            <section>
+                <div>
+                    <img id="currencyImageDe" src="./assets/BRL.png" alt="Logo Moeda Atual">
+                    <p id="currencyTextDe" class="currency">Real</p>
+                    <p id="currencyValueDe" class="currency-valor">R$ 0.0</p>
+                </div>
+                <div>
+                    <img src="./assets/Vector.png" alt="Logo Conversor de Moedas">
+                </div>
+                <div>
+                    <img id="currencyImagePara" src="./assets/USD.png" alt="Logo Moeda Conversão">
+                    <p id="currencyTextPara" class="currency">Dólar</p>
+                    <p id="currencyValuePara" class="currency-valor">US$ 0.0</p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        const currencyMap = {
+            'BRL': {
+                name: 'Real',
+                symbol: 'R$',
+                placeholder: 'R$ 10.0000,00',
+                rate: 1 // Taxa de câmbio fictícia
+            },
+            'USD': {
+                name: 'Dólar',
+                symbol: 'US$',
+                placeholder: 'US$ 10.0000,00',
+                rate: 0.2 // Taxa de câmbio fictícia
+            },
+            'EUR': {
+                name: 'Euro',
+                symbol: '€',
+                placeholder: '€ 10.0000,00',
+                rate: 0.18 // Taxa de câmbio fictícia
+            }
+        };
+
+        document.getElementById('converterDe').addEventListener('change', function () {
+            var selectedCurrency = this.value;
+            var currencyImage = document.getElementById('currencyImageDe');
+            var currencyText = document.getElementById('currencyTextDe');
+            var valorInput = document.getElementById('valorInput');
+
+            currencyImage.src = `./assets/${selectedCurrency}.png`;
+            currencyText.textContent = currencyMap[selectedCurrency].name;
+            valorInput.placeholder = currencyMap[selectedCurrency].placeholder;
+        });
+
+        document.getElementById('converterPara').addEventListener('change', function () {
+            var selectedCurrency = this.value;
+            var currencyImage = document.getElementById('currencyImagePara');
+            var currencyText = document.getElementById('currencyTextPara');
+
+            currencyImage.src = `./assets/${selectedCurrency}.png`;
+            currencyText.textContent = currencyMap[selectedCurrency].name;
+        });
+
+        document.getElementById('convertButton').addEventListener('click', function () {
+            var converterDe = document.getElementById('converterDe').value;
+            var converterPara = document.getElementById('converterPara').value;
+            var valorInput = parseFloat(document.getElementById('valorInput').value.replace(/[^0-9,-]+/g,"").replace(",","."));
+
+            if (isNaN(valorInput)) {
+                alert("Por favor, insira um valor válido.");
+                return;
+            }
+
+            var valorConvertido = (valorInput * currencyMap[converterPara].rate) / currencyMap[converterDe].rate;
+
+            document.getElementById('currencyValueDe').textContent = `${currencyMap[converterDe].symbol} ${valorInput.toFixed(2)}`;
+            document.getElementById('currencyValuePara').textContent = `${currencyMap[converterPara].symbol} ${valorConvertido.toFixed(2)}`;
+        });
+
+        // Initialize on page load
+        var initialCurrency = document.getElementById('converterDe').value;
+        document.getElementById('currencyImageDe').src = `./assets/${initialCurrency}.png`;
+        document.getElementById('currencyTextDe').textContent = currencyMap[initialCurrency].name;
+        document.getElementById('valorInput').placeholder = currencyMap[initialCurrency].placeholder;
+    </script>
+</body>
+
+</html>
